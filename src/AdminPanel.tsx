@@ -128,7 +128,7 @@ export default function AdminPanel() {
             }}> 
                 <strong style = {CellSize('100%')}>Filters</strong>
                 
-                <strong style={selectStyle} onClick = {() => setIsOpen(!isOpen)} >Select</strong>
+                <strong style={{...selectStyle,wordWrap: 'break-word'}} onClick = {() => setIsOpen(!isOpen)} >Select</strong>
                  {isOpen && ( 
                 <div style={{
                     position: 'absolute', 

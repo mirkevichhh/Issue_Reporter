@@ -31,41 +31,107 @@ export default function Auth(){
         setLoading(false)
     }
 
-    return(
-        <div style = {{padding : '50px' , maxWidth: '400px', margin: '0 auto'}}>
-            <h2>Authorization for coming in system</h2>
-            <form>
-                <div 
-                style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    marginBottom: '10px' 
-                    }}>
-                    <label style={{ width: '90px' }}>Email</label>
-                    <input type = "email" value = {email} onChange={(e) => setEmail(e.target.value)} /> 
+    return (
+        <div
+            style={{
+                width: '100%',
+                maxWidth: '500px',
+                margin: '0 auto',
+                padding: 'clamp(25px, 8vw, 50px) clamp(15px, 5vw, 30px)',
+                boxSizing: 'border-box'}}>
+            <h2
+                style={{
+                    textAlign: 'center',
+                    fontSize: 'clamp(20px, 5vw, 26px)',
+                    margin: '0 0 25px 0',}}>
+                Authorization for coming in system
+            </h2>
+
+            <form
+                style={{
+                    width: '100%',
+                    maxWidth: '400px',
+                    margin: '0 auto'}}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '100%',
+                        marginBottom: '15px'}}>
+                    <label style={{
+                            width: '90px',
+                            flexShrink: 0,
+                            textAlign: 'right',
+                            marginRight: '10px',}}>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{
+                            flex: 1,
+                            minWidth: 0,
+                            boxSizing: 'border-box'}}/>
                 </div>
-                <div 
-                style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    marginTop: '10px' 
+
+                <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '100%',
+                        marginBottom: '20px',
                     }}>
-                    <label style={{ width: '90px' }}>Password</label>
-                    <input type = "password" value = {password} onChange={(e) => setPassword(e.target.value)} /> 
+                    <label style={{
+                            width: '90px',
+                            flexShrink: 0,
+                            textAlign: 'right',
+                            marginRight: '10px',
+                        }}>
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{
+                            flex: 1,
+                            minWidth: 0,
+                            boxSizing: 'border-box'}}/>
                 </div>
-                <div 
-                style = {{
-                    marginTop: '20px', 
-                    display: 'flex', 
-                    gap: '10px', 
-                    marginLeft: '90px',
-                    width: '170px'
-                    }}>
-                    <button style={{ flex: 1 }} onClick = {signup} disabled = {loading}>Sign Up</button>
-                    <button style={{ flex: 1 }} onClick = {login} disabled = {loading}>Log In</button>
+
+                
+                <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '10px',
+                        width: '100%'}}>
+                    <button
+                        type="button"
+                        onClick={signup}
+                        disabled={loading}>
+                        Sign Up
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={login}
+                        disabled={loading}>
+                        Log In
+                    </button>
                 </div>
             </form>
-            {message && <p style={{ color: 'blue', marginTop: '20px' }}>{message}</p>}
+
+            {message && (
+                <p style={{
+                        textAlign: 'center',
+                        color: 'blue',
+                        marginTop: '20px',
+                        overflowWrap: 'anywhere',}}>
+                    {message}
+                </p>
+            )}
         </div>
     )
 }
