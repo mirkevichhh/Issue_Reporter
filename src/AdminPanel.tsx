@@ -124,7 +124,7 @@ export default function AdminPanel() {
                 alignItems: 'flex-start',
                 gap: '10px',
                 flexDirection: 'column',
-                width: '15%'
+                width: '20%'
             }}> 
                 <strong style = {CellSize('100%')}>Filters</strong>
                 
@@ -133,9 +133,10 @@ export default function AdminPanel() {
                 <div style={{
                     position: 'absolute', 
                     marginTop: '100px', 
-                    width: '15%',    
+                    width: '20%',    
                     zIndex: 10,        
                     display: 'flex',
+                    wordWrap: 'break-word', 
                     flexDirection: 'column',
                     }}>
                     
@@ -157,11 +158,12 @@ export default function AdminPanel() {
             </div>
             
 
-            <div style={{ marginTop: '30px' }}>
+            <div style={{ marginTop: '30px', width:'100%', overflowX:'auto',WebkitOverflowScrolling: 'touch' }}>
+                <div style={{minWidth: '1000px'}}>
                 <div style={rowStyle} >
                 <strong style={(CellSize('100px'))}>№</strong>
                 <strong style={CellSize('400px')}>Title</strong>
-                <strong style={CellSize('180px')}>Status</strong> 
+                <strong style={CellSize('200px')}>Status</strong> 
                 <strong style={CellSize('150px')}>Category</strong> 
                 <strong style={CellSize('250px')}>Author</strong> 
                 <strong style={CellSize('150px')}>Date</strong>
@@ -176,7 +178,7 @@ export default function AdminPanel() {
                         <div style={CellSize('400px')}>{iss.title}</div>
                         
 
-                        <div style={CellSize('180px')}>
+                        <div style={CellSize('200px')}>
                             <select style={selectStyle}
                             value = {iss.status}  
                             onChange={(e) => upgrade_status(iss.id , e.target.value)}>
@@ -201,6 +203,7 @@ export default function AdminPanel() {
                 ))}
 
             </ul>
+            </div>
             
             </div>
             

@@ -47,7 +47,8 @@ export default function AdminHistory() {
     return (
         <div style={{  width: '95%', maxWidth: '1400px', margin: '0 auto', color: 'white' }}>
             <h2 style={{ textAlign: 'center' }}>Welcome to history page</h2>
-            <h3 style={{ textAlign: 'center', marginBottom: '30px' }}>That's all history</h3>
+            <p style={{ textAlign: 'center', marginBottom: '30px',color:'#5f6470' }}>That's all history</p>
+            <div style={{borderBottom: '1px solid #24272f', margin: '20px 0' }}></div>
             <button onClick={() => navigate("/admin_lobby")}
                 style = {{
                     top:'20px',
@@ -58,30 +59,34 @@ export default function AdminHistory() {
                     width: '125px'
                 }}>
             Back to lobyy</button>
+            <div style={{ overflow: 'hidden', width: '100%' }}>
+                <div style={{width:'100%', overflowX:'auto',WebkitOverflowScrolling: 'touch'  }}>
+                    <div style={{minWidth: '1000px'}}>
+                        <div style={rowStyle}>
+                            <strong style={CellSize('100px')}>№</strong>
+                            <strong style={CellSize('400px')}>Title</strong>
+                            <strong style={CellSize('130px')}>Status</strong> 
+                            <strong style={CellSize('160px')}>Action</strong> 
+                            <strong style={CellSize('300px')}>Author</strong> 
+                            <strong style={CellSize('130px')}>Date</strong>
+                        </div>
+                        
 
-
-            <div style={rowStyle}>
-                <strong style={CellSize('100px')}>№</strong>
-                <strong style={CellSize('400px')}>Title</strong>
-                <strong style={CellSize('130px')}>Status</strong> 
-                <strong style={CellSize('160px')}>Action</strong> 
-                <strong style={CellSize('300px')}>Author</strong> 
-                <strong style={CellSize('130px')}>Date</strong>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                            {history.map((request, index) => (
+                                <li key={request.id} style={rowStyle}>
+                                    <div style={CellSize('100px')}><strong>#{history.length-index}</strong></div>
+                                    <div style={CellSize('400px')}>{request.issues?.title}</div>
+                                    <div style={CellSize('130px')}><strong>{request.new_status}</strong></div> 
+                                    <div style={CellSize('160px')}>{request.comment}</div> 
+                                    <div style={CellSize('300px')}>{request.profiles?.email ? request.profiles?.email : <span>Admin</span>}</div>
+                                    <div style={CellSize('130px')}>{new Date(request.changed_at).toLocaleString()}</div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {history.map((request, index) => (
-                    <li key={request.id} style={rowStyle}>
-                        <div style={CellSize('100px')}><strong>#{history.length-index}</strong></div>
-                        <div style={CellSize('400px')}>{request.issues?.title}</div>
-                        <div style={CellSize('130px')}><strong>{request.new_status}</strong></div> 
-                        <div style={CellSize('160px')}>{request.comment}</div> 
-                        <div style={CellSize('300px')}>{request.profiles?.email ? request.profiles?.email : <span>Admin</span>}</div>
-                        <div style={CellSize('130px')}>{new Date(request.changed_at).toLocaleString()}</div>
-                    </li>
-                ))}
-            </ul>
         </div>
     )
 }

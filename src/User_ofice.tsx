@@ -73,78 +73,65 @@ export default function User_ofice() {
         }
     }
     return(
-        <div style = {{padding : '50px' , maxWidth: '400px', margin: '0 auto'}}>
-            <h2 style={{marginBottom:'30px'}}>Welcome to {username}'s office</h2>
-            <h1>Report an Issue</h1>
-
-
-            <button 
-        onClick={logout} 
-        style = {{ 
-            position: 'fixed', 
-            top: '20px',       
-            right: '20px',     
-            padding: '8px 16px',
-            cursor: 'pointer',
-            width: '125px'
-        }}
-        >Log out</button>
-        
-        <button
-        onClick = {() => navigate("/user_history")}
-        style = {{
-            top:'20px',
-            left: '20px',
-            position: 'fixed',
-            padding: '8px 16px',
-            cursor: 'pointer',
-            width: '125px'
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            boxSizing: 'border-box'
         }}>
-            History
-        </button>
-            
-            <form onSubmit={Info_about_report}>
-                <div
-                style={{ 
-                        display: 'flex', 
-                        flexDirection: 'column',
-                        marginBottom: '15px' 
-                        }}>
-                        <label style={{ marginBottom: '10px', width: '400px'  }}>Short about your problem</label>
-                        <input type = "text" placeholder="Example: I can't click on buttle of my profile"  value = {title} onChange={(e) => setTitle(e.target.value)}/> 
-                </div>
-                <div 
-                style={{
-                    display:'flex',
-                    flexDirection: 'column',
-                    marginBottom: '15px'
-                }}>
-                    <label style={{ marginBottom: '10px', width: '400px'  }}>Chosee category of the problem </label>
-                    <select 
-                    value = {category}  
-                    onChange={(e) => setCategory(e.target.value)}>
-                        <option value = "Bug">Bug</option>
-                        <option value = "UX">UX (bad interface)</option>
-                        <option value = "Performance" >Performance (lags)</option>
-                        <option value = "Other">Other</option>
-                    </select>
-                </div>
-                <div
-                style={{ 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        marginBottom: '15px'
-                        }}>
-                        <label style={{ marginBottom: '10px', width: '400px'  }}>Detailed description what happened</label>
-                        <textarea placeholder='Can you tell for us situation in all details' value = {description} style={{height: '200px'}} onChange={(e) => setDescription(e.target.value)} />  
-                </div>
+            <div style={{ padding: '50px', maxWidth: 'clamp(400px, 40vw, 700px)', width: '100%', boxSizing: 'border-box', textAlign: 'center' , whiteSpace: 'nowrap'}}>
+                <h2 style={{marginBottom:'30px', fontSize: 'clamp(18px, 2.2vw, 24px)'}}>Welcome to {username}'s office</h2>
+                <h1 style={{ fontSize: 'clamp(32px, 4.5vw, 50px)'}}>Report an Issue</h1>
 
-                <button type="submit" disabled={loading} style={{ padding: '8px 16px', cursor: 'pointer' , width: '150px' }}>
-                    {loading ? 'Sending... ' : 'Send Report'}
+                <button 
+                    onClick={logout} 
+                    style={{ 
+                        position: 'fixed', 
+                        top: '20px',       
+                        right: '20px',     
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        width: '125px'
+                    }}
+                >Log out</button>
+            
+                <button
+                    onClick={() => navigate("/user_history")}
+                    style={{
+                        top:'20px',
+                        left: '20px',
+                        position: 'fixed',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        width: '125px'
+                    }}>
+                    History
                 </button>
                 
-            </form>
-            
+                <form onSubmit={Info_about_report}>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '15px' }}>
+                        <label style={{ marginBottom: '10px', width: '100%' }}>Short about your problem</label>
+                        <input type="text" placeholder="Example: I can't click on buttle of my profile" value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: '100%', boxSizing: 'border-box' }}/> 
+                    </div>
+                    <div style={{ display:'flex', flexDirection: 'column', marginBottom: '15px' }}>
+                        <label style={{ marginBottom: '10px', width: '100%' }}>Chosee category of the problem </label>
+                        <select value={category} onChange={(e) => setCategory(e.target.value)} style={{ width: '100%', boxSizing: 'border-box' }}>
+                            <option value="Bug">Bug</option>
+                            <option value="UX">UX (bad interface)</option>
+                            <option value="Performance">Performance (lags)</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '15px' }}>
+                        <label style={{ marginBottom: '10px', width: '100%' }}>Detailed description what happened</label>
+                        <textarea placeholder='Can you tell for us situation in all details' value={description} style={{ height: '200px', width: '100%', boxSizing: 'border-box' }} onChange={(e) => setDescription(e.target.value)} />  
+                    </div>
+
+                    <button type="submit" disabled={loading} style={{ padding: '8px 16px', cursor: 'pointer', width: '150px' }}>
+                        {loading ? 'Sending... ' : 'Send Report'}
+                    </button>
+                </form>
+            </div>
         </div>
     )
 }
