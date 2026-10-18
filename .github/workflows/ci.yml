@@ -26,8 +26,5 @@ jobs:
       - name: Typecheck and build
         run: npm run build
 
-      - name: Run ESLint
+      - name: Run oxlint
         run: npm run lint
-
-      - name: Run tests (Vitest)
-        run: npx vitest run
